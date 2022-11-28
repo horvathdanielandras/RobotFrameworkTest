@@ -5,27 +5,21 @@
 
 trigger:
 - master
-
-- task: UsePythonVersion@0
-  inputs:
-    versionSpec: '3.x'
-    addToPath: true
-    architecture: 'x64'
+steps:
+-   task: UsePythonVersion@0
+    inputs:
+      versionSpec: '3.x'
+      addToPath: true
+      architecture: 'x64'
       python.version: '3.10'
-
-
-
-
-- script: |
-    python -m pip install -r requirements.txt
-    && webdrivermanager chrome -- linkpath AUTO
-  displayName: 'Install Robot Framework'
-
-- script: |
-    robot -x outputxunit.xml "TestCases"
-  displayName: 'Run Robot Tests'
-
-- script: |
-    pip install pytest pytest-azurepipelines
-    pytest
-  displayName: 'pytest'
+-   script: |
+      python -m pip install -r requirements.txt && webdrivermanager chrome --linkpath AUTO
+      displayName: 'Setup Robot Framework'
+-   task: PowerShell@2
+    inputs:
+      targetType: 'inline'
+      script: |
+        # Write your PowerShell commands here.
+      
+        Write-Host "Hello World"
+        robot -x outputxunit.xml "TestCases"
