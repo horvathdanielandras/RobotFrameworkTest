@@ -4,7 +4,7 @@ Test Teardown    Close All Browsers
 
 *** Variables ***
 ${HOMEPAGE}   https://www.google.com
-${BROWSER}    Chrome
+${BROWSER}    headlesschrome
 *** Test Cases ***
 Look at google
     open browser    url=${HOMEPAGE}  browser=${BROWSER}    executable_path=TestCases/chromedriver.exe
