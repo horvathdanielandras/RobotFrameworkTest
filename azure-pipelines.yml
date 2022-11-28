@@ -14,7 +14,7 @@ steps:
       python.version: '3.10'
 -   script: |
       python -m pip install -r TestCases/requirements.txt && webdrivermanager chrome --linkpath AUTO
-      displayName: 'Setup Robot Framework'
+    displayName: 'Setup Robot Framework'
 -   task: PowerShell@2
     inputs:
       targetType: 'inline'
