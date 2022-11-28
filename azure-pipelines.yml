@@ -3,8 +3,6 @@
 # Add steps that analyze code, save the dist with the build record, publish to a PyPI-compatible index, and more:
 # https://docs.microsoft.com/azure/devops/pipelines/languages/python
 
-trigger:
-- master
 steps:
 -   task: UsePythonVersion@0
     inputs:
@@ -13,7 +11,7 @@ steps:
       architecture: 'x64'
       python.version: '3.10'
 -   script: |
-      python -m pip install -r TestCases/requirements.txt && webdrivermanager chrome --linkpath AUTO
+      python -m pip install -r TestCases/requirements.txt && webdrivermanager chrome --linkpath TestCases
     displayName: 'Setup Robot Framework'
 -   task: PowerShell@2
     inputs:
